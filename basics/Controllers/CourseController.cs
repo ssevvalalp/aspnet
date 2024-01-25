@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using basics.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace basics.Controllers
 {
@@ -12,8 +13,14 @@ namespace basics.Controllers
         //course
         //course/index
         public IActionResult Index()
+
         {
-            return View();
+            //Course Modelinden obje tanımlama
+            var course = new Course();
+            course.Id = 1;
+            course.Title = "Aspnet Core Kursu";
+            course.Description = "Güzel bir kurs";
+            return View(course);
         }
 
         //course/index/list
