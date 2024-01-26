@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@model List<Course>
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,5 +10,17 @@
 </head>
 <body>
     <h1> Course List Page</h1>
+    <p>
+        @foreach (var COURSE in Model)
+        {
+
+
+            <div id="course_@COURSE.Id">
+                <h2>@COURSE.Title</h2>
+                <p>@COURSE.Description</p>
+
+            </div>
+        }
+    </p>
 </body>
 </html>
