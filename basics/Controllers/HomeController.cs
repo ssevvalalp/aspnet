@@ -7,7 +7,9 @@ namespace basics.Controllers
 {
     public class HomeController : Controller
     {
-      
+        //localhost -->home/index
+        //localhost/home  -->home/index
+        //localhost/home/index -->home/index
 
         public IActionResult Index()
         {
