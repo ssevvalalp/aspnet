@@ -20,6 +20,7 @@ namespace basics.Controllers
             course.Id = 1;
             course.Title = "Aspnet Core Kursu";
             course.Description = "Güzel bir kurs";
+            course.Image = "1.jpg";
             return View(course);
         }
 
