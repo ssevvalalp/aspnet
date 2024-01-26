@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                <a href="/course/details/@Model.Id">
+                <a asp-controller="Course" asp-action="Details" asp-route-id="@Model.Id">
                     <h5 class="card-title">@Model.Title</h5>
                 </a>
                 
