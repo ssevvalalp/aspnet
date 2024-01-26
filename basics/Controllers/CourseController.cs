@@ -28,10 +28,10 @@ namespace basics.Controllers
         {
             var courses = new List<Course>()
             {
-                new Course(){Id = 1, Title = "Aspnet Kursu", Description = "güzel bir kurs"},
-                new Course(){Id = 2, Title = "Php Kursu", Description = "güzel bir kurs"},
-                new Course(){Id = 3, Title = "Django Kursu", Description = "güzel bir kurs"},
-                new Course(){Id = 4, Title = "JavaScript Kursu", Description = "güzel bir kurs"}
+                new Course(){Id = 1, Title = "Aspnet Kursu", Description = "güzel bir kurs", Image ="1.jpg"},
+                new Course(){Id = 2, Title = "Php Kursu", Description = "güzel bir kurs", Image = "2.jpg"},
+                new Course(){Id = 3, Title = "Django Kursu", Description = "güzel bir kurs", Image = "3.jpg"}
+              
             };
             return View("CourseList", courses);
         }
