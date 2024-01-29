@@ -1,0 +1,19 @@
+Model
+=>Film
+
+View
+=>Film
+==>FilmList
+==>Details
+=>Home
+=>Index
+
+Controller
+=>HomeController
+=>FilmController
+
+MVC 
+Bootstrap
+Layout-Partial Views- Sections
+Razor Syntax
+GetForm
