@@ -6,22 +6,14 @@ namespace basics_FilmsApp.Controllers
 {
     public class HomeController : Controller
     {
-       
-
-        public HomeController()
-        {
-            
-        }
+      
 
         public IActionResult Index()
         {
-            return View();
+            return View(Repository.Films);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+       
 
     }
 }

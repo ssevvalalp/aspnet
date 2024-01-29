@@ -37,7 +37,7 @@
         }
 
         //public
-        public static List<Film> Film { get {  return _films; } }
+        public static List<Film> Films { get {  return _films; } }
 
         //routing
 
