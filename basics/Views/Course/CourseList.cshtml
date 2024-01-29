@@ -2,8 +2,12 @@
 
 
 
-@foreach (var kurs in Model)
+@foreach (var course in Model)
 {
-   @await Html.PartialAsync("_CourseCard" , kurs)
+    if (course.isActive)
+    {
+        @await Html.PartialAsync("_CourseCard", course)
+    }
+  
 }
 
