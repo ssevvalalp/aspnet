@@ -17,6 +17,7 @@ namespace FormsApp.Controllers
             var products = Repository.Products;
             if (!String.IsNullOrEmpty(searchString))
             {
+                ViewBag.SearchString = searchString;
                 products = products.Where(p => p.Name.ToLower().Contains(searchString)).ToList();
                 
             }
