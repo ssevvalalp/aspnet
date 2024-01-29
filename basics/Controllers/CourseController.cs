@@ -8,28 +8,17 @@ namespace basics.Controllers
     //course
     public class CourseController : Controller
     {
-        //course
-        //course/index
-        public IActionResult Index()
+      
+
+        public IActionResult Details(int? id)
 
         {
-            //Course Modelinden obje tanımlama
-            var course = new Course();
-            course.Id = 1;
-            course.Title = "Aspnet Core Kursu";
-            course.Description = "Güzel bir kurs";
-            course.Image = "1.jpg";
-            return View(course);
-        }
-
-        public IActionResult Details()
-
-        {
-            var course = new Course();
-            course.Id = 1;
-            course.Title = "Aspnet Core Kursu";
-            course.Description = "Güzel bir kurs";
-            course.Image = "1.jpg";
+            if(id == null)
+            {
+                return RedirectToAction("List", "Course");
+                //return Redirect("/course/list");
+            }
+            var course = Repository.GetById(id);
             return View(course);
         }
 
