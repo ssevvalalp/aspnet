@@ -52,3 +52,6 @@ return View(Repository.Products)
          </tr>
  }
  </tbody>
+
+
+product bilgileri liste üzerinden ekstra parametreler ViewBag ile gönderildi. Tüm bunlar için product View Model oluşturulabilir.
