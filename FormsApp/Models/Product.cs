@@ -1,7 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.ComponentModel.DataAnnotations;
 
 namespace FormsApp.Models
 {
+    //[Bind("Name", "Price", "CategoryId")]
     public class Product
     {
         //@Html.DisplayNameFor
@@ -16,6 +19,7 @@ namespace FormsApp.Models
        
         public decimal Price { get; set; }
 
+        //[BindNever]
         [Display(Name = "Image")]
         public string? Image { get; set; }
 

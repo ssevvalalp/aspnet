@@ -52,8 +52,11 @@ namespace FormsApp.Controllers
 
         [HttpPost]
         public IActionResult Create(Product model)
+        //public IActionResult Create(string Name, decimal Price, int CategoryId)
+        //public IActionResult Create([Bind("Name", "Price", "CategoryId")]Product model)
         {
-            return View();
+            Repository.CreatedProduct(model);
+            return RedirectToAction("Index");
 
         }
 

@@ -23,6 +23,13 @@
         }
 
 
+        //Adding the data received via PostForm to the Repository
+
+        public static void CreatedProduct(Product newProduct)
+        {
+            _products.Add(newProduct);
+
+        }
 
         public static List<Product> Products
         { 
