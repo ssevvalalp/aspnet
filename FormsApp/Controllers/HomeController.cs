@@ -13,6 +13,7 @@ namespace FormsApp.Controllers
             
         }
 
+        [HttpGet]
         public IActionResult Index(string searchString, string category)
         {
             var products = Repository.Products;
@@ -41,12 +42,20 @@ namespace FormsApp.Controllers
             return View(model);
 
         }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            ViewBag.Categories = Repository.Categories;
+            return View();
 
-        public IActionResult Privacy()
+        }
+
+        [HttpPost]
+        public IActionResult Create(Product model)
         {
             return View();
 
         }
-     
+
     }
 }
