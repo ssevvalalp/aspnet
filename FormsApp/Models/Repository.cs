@@ -32,10 +32,12 @@
             }
         }
 
-        public static List<Category> Categories { get
-            {
+        public static List<Category> Categories 
+        {
+            get {
                 return _categories;
-            } }
+            } 
+        }
             
             
     }

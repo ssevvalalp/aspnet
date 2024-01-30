@@ -1,0 +1,54 @@
+**Model
+=> Product.cs
+=> Category.cs
+=> Repository.cs
+//private 
+-private static readonly List<Product> _products = new List<Product>();
+
+//public
+- public static List<Product> Products
+{ 
+
+    get {
+        return _products; 
+    }
+}
+
+//veri
+-  static Repository()
+ {
+    _products.Add(new Product { ProductId = 1, Name = "Iphone 14 ", Price = 40000, IsActive = true, Image = "1.jpg", CategoryId = 1 });
+}
+
+
+
+**Controller
+HomeController.cs
+
+public IActionResult index()
+{
+return View(Repository.Products)
+}
+
+**View
+=> Index.cshtml
+
+- @model IEnumerable<Products>
+
+-  <tbody>
+ @foreach (var product in @Model)
+ {
+         <tr>
+             <td>@product.ProductId</td>
+             <td>
+                 <img src="~/img/@product.Image" class="img-fluid" alt="">
+             </td>
+             <td>@product.Name</td>
+             <td>@product.Price</td>
+             <td>
+                 <a href="" class="btn btn-sm btn-primary">Edit</a>
+                 <a href="" class="btn btn-sm btn-danger">Delete</a>
+             </td>
+         </tr>
+ }
+ </tbody>

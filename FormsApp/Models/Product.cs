@@ -4,6 +4,7 @@ namespace FormsApp.Models
 {
     public class Product
     {
+        //@Html.DisplayNameFor
         [Display(Name = "Product Id")]
         public int ProductId { get; set; }
 

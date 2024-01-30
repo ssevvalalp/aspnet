@@ -35,7 +35,32 @@
                 </form>
                
             </div>
+          
+
         </nav>
+
+       @*  Category Select *@
+
+        @* <div class="card card-body my-3">
+
+            <form asp-action="Index" method="get">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <select class="form-select" name="category" asp-items="ViewBag.Categories">
+                                @* urlye category eklenir name ile 
+                                <option value="0">Hepsi</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-primary">Filtrele</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div> *@ 
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">
