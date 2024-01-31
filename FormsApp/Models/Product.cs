@@ -23,7 +23,7 @@ namespace FormsApp.Models
         public decimal? Price { get; set; }
 
         //[BindNever]
-        [Required]
+        
         [Display(Name = "Image")]
         public string? Image { get; set; } = string.Empty;
 

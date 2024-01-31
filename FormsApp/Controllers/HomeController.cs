@@ -52,7 +52,7 @@ namespace FormsApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Product model)
+        public IActionResult Create(Product model, IFormFile imageFile)
         //public IActionResult Create(string Name, decimal Price, int CategoryId)
         //public IActionResult Create([Bind("Name", "Price", "CategoryId")]Product model)
         {
