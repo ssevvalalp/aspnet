@@ -22,7 +22,8 @@ namespace FormsApp.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 ViewBag.SearchString = searchString;
-                products = products.Where(p => p.Name.ToLower().Contains(searchString)).ToList();
+                products = products.Where(p => p.Name!.ToLower().Contains(searchString)).ToList(); 
+                //modelde nullable alan olarak tanımladım ama, ! ile böyle kullanım yapmayacağımı garantiliyorum
                 
             }
 
