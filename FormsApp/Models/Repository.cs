@@ -31,6 +31,21 @@
 
         }
 
+        public static void EditProduct (Product updatedProduct)
+        {
+            var entitiy = _products.FirstOrDefault(p => p.ProductId == updatedProduct.ProductId);
+
+            if(entitiy != null)
+            {
+                entitiy.Name = updatedProduct.Name;
+                entitiy.Price = updatedProduct.Price;
+                entitiy.Image = updatedProduct.Image;
+                entitiy.IsActive = updatedProduct.IsActive;
+                entitiy.CategoryId = updatedProduct.CategoryId;
+                
+            }
+        }
+
         public static List<Product> Products
         { 
         
