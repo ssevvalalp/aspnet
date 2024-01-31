@@ -56,12 +56,20 @@ namespace FormsApp.Controllers
         //public IActionResult Create(string Name, decimal Price, int CategoryId)
         //public IActionResult Create([Bind("Name", "Price", "CategoryId")]Product model)
         {
-            
 
+
+            var allowedExtensions = new[] { ".jpg", ".jpeg" , ".png" };
             var extension = Path.GetExtension(imageFile.FileName);// abc.jpg ->.jpg
             var randomFileName = string.Format($"{Guid.NewGuid().ToString()}{extension}"); // abc + .jpg -> abc.jpg 
             var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", randomFileName);
 
+            if(imageFile != null)
+            {
+                if (!allowedExtensions.Contains(extension))
+                {
+                    ModelState.AddModelError("", "Geçerli bir görsel seçiniz");
+                }
+            }
 
             if (ModelState.IsValid)
             {
