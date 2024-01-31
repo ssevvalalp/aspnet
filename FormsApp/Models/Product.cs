@@ -32,5 +32,7 @@ namespace FormsApp.Models
         [Required]
         [Display(Name = "Category")]
         public int? CategoryId { get; set; } //foreign key
+
+        //public IFormFile ImageFile { get; set; } acceptable
     }
 }

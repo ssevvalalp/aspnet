@@ -52,14 +52,29 @@ namespace FormsApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Product model, IFormFile imageFile)
+        public async Task <IActionResult> Create(Product model, IFormFile imageFile)
         //public IActionResult Create(string Name, decimal Price, int CategoryId)
         //public IActionResult Create([Bind("Name", "Price", "CategoryId")]Product model)
         {
+            
+
+            var extension = Path.GetExtension(imageFile.FileName);// abc.jpg ->.jpg
+            var randomFileName = string.Format($"{Guid.NewGuid().ToString()}{extension}"); // abc + .jpg -> abc.jpg 
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", randomFileName);
+
 
             if (ModelState.IsValid)
             {
-                model.ProductId = Repository.Products.Count + 1;
+                //uploding the file
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+
+                model.Image = randomFileName;
+
+                    model.ProductId = Repository.Products.Count + 1;
                 Repository.CreatedProduct(model);
                 return RedirectToAction("Index");
 
