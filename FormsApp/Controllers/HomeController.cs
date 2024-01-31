@@ -55,9 +55,18 @@ namespace FormsApp.Controllers
         //public IActionResult Create(string Name, decimal Price, int CategoryId)
         //public IActionResult Create([Bind("Name", "Price", "CategoryId")]Product model)
         {
-            Repository.CreatedProduct(model);
-            return RedirectToAction("Index");
 
+            if (ModelState.IsValid)
+            {
+                model.ProductId = Repository.Products.Count + 1;
+                Repository.CreatedProduct(model);
+                return RedirectToAction("Index");
+
+
+            }
+            ViewBag.Categories = new SelectList(Repository.Categories, "CategoryId", "Name");
+
+            return View(model);
         }
 
     }

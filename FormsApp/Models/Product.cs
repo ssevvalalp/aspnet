@@ -12,20 +12,25 @@ namespace FormsApp.Models
         public int ProductId { get; set; }
 
         [Display(Name = "Name")]
-        [Required]
-        public string Name { get; set; } = string.Empty;
+        [Required (ErrorMessage ="Zorunlu alan")] 
+        [StringLength(100,ErrorMessage ="{0}, Length must be between {2} and {1}", MinimumLength = 3)] //length range
+        public string? Name { get; set; }
 
+        [Range(0, 100000)]
         [Display(Name = "Price")]
-       
-        public decimal Price { get; set; }
+
+        [Required]
+        public decimal? Price { get; set; }
 
         //[BindNever]
+        [Required]
         [Display(Name = "Image")]
-        public string? Image { get; set; }
+        public string? Image { get; set; } = string.Empty;
 
         public bool IsActive { get; set; }
 
+        [Required]
         [Display(Name = "Category")]
-        public int CategoryId { get; set; } //foreign key
+        public int? CategoryId { get; set; } //foreign key
     }
 }
