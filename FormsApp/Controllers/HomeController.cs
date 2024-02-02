@@ -58,14 +58,13 @@ namespace FormsApp.Controllers
         //public IActionResult Create([Bind("Name", "Price", "CategoryId")]Product model)
         {
 
-
-            var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
-            var extension = Path.GetExtension(imageFile.FileName);// abc.jpg ->.jpg
-            var randomFileName = string.Format($"{Guid.NewGuid().ToString()}{extension}"); // abc + .jpg -> abc.jpg 
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", randomFileName);
+            var extension = "";
+           
 
             if (imageFile != null)
             {
+                var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
+                extension = Path.GetExtension(imageFile.FileName);// abc.jpg ->.jpg
                 if (!allowedExtensions.Contains(extension))
                 {
                     ModelState.AddModelError("", "Geçerli bir görsel seçiniz");
@@ -77,19 +76,23 @@ namespace FormsApp.Controllers
                 //uploding the file
                 if (imageFile != null)
                 {
+                    var randomFileName = string.Format($"{Guid.NewGuid().ToString()}{extension}"); // abc + .jpg -> abc.jpg 
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", randomFileName);
 
                     using (var stream = new FileStream(path, FileMode.Create))
                     {
                         await imageFile.CopyToAsync(stream);
                     }
+
+                    model.Image = randomFileName;
+
+                    model.ProductId = Repository.Products.Count + 1;
+                    Repository.CreatedProduct(model);
+                    return RedirectToAction("Index");
                 }
 
 
-                model.Image = randomFileName;
-
-                model.ProductId = Repository.Products.Count + 1;
-                Repository.CreatedProduct(model);
-                return RedirectToAction("Index");
+              
 
 
             }
