@@ -46,6 +46,17 @@
             }
         }
 
+        public static void DeleteProduct(Product deletedProduct)
+        {
+            var entitiy = _products.FirstOrDefault(p => p.ProductId == deletedProduct.ProductId);
+
+            if (entitiy != null)
+            {
+                _products.Remove(entitiy);
+            }
+        }
+
+
         public static List<Product> Products
         { 
         
