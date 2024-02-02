@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection.Metadata.Ecma335;
 
 namespace FormsApp.Controllers
 {
@@ -36,7 +37,8 @@ namespace FormsApp.Controllers
 
             //ViewBag.Categories = new SelectList(Repository.Categories, "CategoryId", "Name", category);
 
-            var model = new ProductViewModel {
+            var model = new ProductViewModel
+            {
                 Products = products,
                 Categories = Repository.Categories,
                 SelectedCategory = category
@@ -59,7 +61,7 @@ namespace FormsApp.Controllers
         {
 
             var extension = "";
-           
+
 
             if (imageFile != null)
             {
@@ -92,7 +94,7 @@ namespace FormsApp.Controllers
                 }
 
 
-              
+
 
 
             }
@@ -104,7 +106,7 @@ namespace FormsApp.Controllers
         [HttpGet]
         public IActionResult Edit(int? id) //url içinden id parametresini aldık ve edit formuna yönlendirdik.
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -124,7 +126,7 @@ namespace FormsApp.Controllers
         public async Task<IActionResult> Edit(int id, Product model, IFormFile? imageFile)
         {
 
-            if(id != model.ProductId)
+            if (id != model.ProductId)
             {
                 return NotFound();
             }
@@ -157,16 +159,39 @@ namespace FormsApp.Controllers
         }
 
         [HttpGet]
-
         public IActionResult Delete(int? id)
         {
-           
-            if(id == null)
+
+            if (id == null)
             {
                 return NotFound();
             }
 
             var entity = Repository.Products.FirstOrDefault(p => p.ProductId == id);
+
+            if (entity == null)
+            {
+                return NotFound();
+            }
+
+            //Repository.DeleteProduct(entity);
+            //return RedirectToAction("Index");
+
+            return View("DeleteConfirm", entity);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id, int ProductId)
+        {
+
+            if (id != ProductId)
+            {
+
+                return NotFound();
+
+            }
+            var entity = Repository.Products.FirstOrDefault(p => p.ProductId == ProductId);
+
             if (entity == null)
             {
                 return NotFound();
@@ -175,6 +200,7 @@ namespace FormsApp.Controllers
             Repository.DeleteProduct(entity);
             return RedirectToAction("Index");
         }
+
 
 
     }
